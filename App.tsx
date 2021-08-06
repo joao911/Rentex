@@ -1,9 +1,9 @@
 import React from 'react';
-import CarDetails from './src/screens/CarDetails';
-import Home from './src/screens/Home';
+
+import Scheduling from './src/screens/Scheduling';
 
 const App = () => {
-  return <CarDetails />;
+  return <Scheduling />;
 };
 
 export default App;
