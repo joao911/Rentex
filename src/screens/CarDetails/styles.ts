@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {getStatusBarHeight} from 'react-native-iphone-x-helper';
+import {getBottomSpace, getStatusBarHeight} from 'react-native-iphone-x-helper';
 import colors from '../../styles/color';
 import {rh} from '../../utils/responsive';
 
@@ -70,10 +70,15 @@ export const About = styled.Text`
   margin-top: ${rh(23)}px;
   line-height: ${rh(25)}px;
 `;
+
 export const Accessories = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin-top: ${rh(16)}px;
+`;
+export const Footer = styled.View`
+  background-color: ${colors.background_primary};
+  padding: ${rh(24)}px ${rh(24)}px ${getBottomSpace() + 24}px;
 `;

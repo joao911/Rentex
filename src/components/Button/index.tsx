@@ -1,15 +1,15 @@
 import React from 'react';
+import {TouchableOpacityProps} from 'react-native';
 
 import {Container, Title} from './styles';
 
-interface ButtonProps {
+interface ButtonProps extends TouchableOpacityProps {
   title: string;
-  color: string;
-  OnPress: () => void;
+  color?: string;
 }
-const Button: React.FC<ButtonProps> = ({title, color, OnPress}) => {
+const Button: React.FC<ButtonProps> = ({title, color, ...rest}) => {
   return (
-    <Container>
+    <Container color={color} {...rest}>
       <Title>{title}</Title>
     </Container>
   );
