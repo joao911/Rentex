@@ -1,9 +1,8 @@
 import React from 'react';
-
-import SchedulingDetails from './src/screens/SchedulingDetails';
+import SchedulingComplete from './src/screens/SchedulingComplete';
 
 const App = () => {
-  return <SchedulingDetails />;
+  return <SchedulingComplete />;
 };
 
 export default App;
