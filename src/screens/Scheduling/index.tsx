@@ -12,10 +12,12 @@ import {
   Content,
   Footer,
 } from './styles';
+
 import BackButton from '../../components/BackButton';
 import colors from '../../styles/color';
 import ArrowSvg from '../../assets/arrow.svg';
 import Button from '../../components/Button';
+import Calendar from '../../components/Calendar';
 
 const Scheduling: React.FC = () => {
   return (
@@ -42,7 +44,9 @@ const Scheduling: React.FC = () => {
           </DateInfo>
         </RentalPeriod>
       </Header>
-      <Content />
+      <Content>
+        <Calendar />
+      </Content>
       <Footer>
         <Button title="Confirmar" />
       </Footer>
