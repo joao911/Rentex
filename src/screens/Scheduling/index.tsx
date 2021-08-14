@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {StatusBar} from 'react-native';
 
 import {
@@ -20,6 +21,10 @@ import Button from '../../components/Button';
 import Calendar from '../../components/Calendar';
 
 const Scheduling: React.FC = () => {
+  const navigation = useNavigation();
+  const handleNavigation = () => {
+    navigation.navigate('SchedulingDetails');
+  };
   return (
     <Container>
       <StatusBar
@@ -48,7 +53,7 @@ const Scheduling: React.FC = () => {
         <Calendar />
       </Content>
       <Footer>
-        <Button title="Confirmar" />
+        <Button title="Confirmar" onPress={handleNavigation} />
       </Footer>
     </Container>
   );

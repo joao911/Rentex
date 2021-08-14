@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import colors from '../../styles/color';
 import {rh, rw} from '../../utils/responsive';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   height: ${rh(126)}px;
   background-color: ${colors.background_secondary};
   flex-direction: row;

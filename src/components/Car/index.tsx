@@ -1,4 +1,5 @@
 import React from 'react';
+import {TouchableOpacityProps} from 'react-native';
 
 import {
   Container,
@@ -24,12 +25,12 @@ interface CarData {
   };
   thumbnail: string;
 }
-interface CarProps {
+interface CarProps extends TouchableOpacityProps {
   data: CarData;
 }
-const Car: React.FC<CarProps> = ({data}) => {
+const Car: React.FC<CarProps> = ({data, ...rest}) => {
   return (
-    <Container>
+    <Container {...rest}>
       <Details>
         <Brand>{data.brand}</Brand>
         <Name>{data.name}</Name>

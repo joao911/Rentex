@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
 
 import {
   Container,
@@ -41,6 +42,11 @@ import {rh} from '../../utils/responsive';
 import colors from '../../styles/color';
 
 const SchedulingDetails: React.FC = () => {
+  const navigation = useNavigation();
+
+  const handleNavigation = () => {
+    navigation.navigate('SchedulingComplete');
+  };
   return (
     <Container>
       <Header>
@@ -95,7 +101,11 @@ const SchedulingDetails: React.FC = () => {
         </RentalPrice>
       </Content>
       <Footer>
-        <Button title="Confirmar" />
+        <Button
+          title="Alugar agora"
+          color={colors.success}
+          onPress={handleNavigation}
+        />
       </Footer>
     </Container>
   );

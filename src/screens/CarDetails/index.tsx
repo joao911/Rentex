@@ -27,8 +27,13 @@ import gasolineSvg from '../../assets/gasoline.svg';
 import exchangeSvg from '../../assets/exchange.svg';
 import peopleSvg from '../../assets/people.svg';
 import Button from '../../components/Button';
+import {useNavigation} from '@react-navigation/native';
 
 const CarDetails: React.FC = () => {
+  const navigation = useNavigation();
+  const handleNavigation = () => {
+    navigation.navigate('Scheduling');
+  };
   return (
     <Container>
       <Header>
@@ -67,7 +72,10 @@ const CarDetails: React.FC = () => {
         </About>
       </Content>
       <Footer>
-        <Button title="Confirmar" />
+        <Button
+          title="Escolher periodo do aluguel"
+          onPress={handleNavigation}
+        />
       </Footer>
     </Container>
   );
