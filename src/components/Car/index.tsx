@@ -15,18 +15,10 @@ import {
 } from './styles';
 
 import Gasoline from '../../assets/gasoline.svg';
+import {CarDto} from '../../dtos/CarDto';
 
-interface CarData {
-  brand: string;
-  name: string;
-  rent: {
-    period: string;
-    price: number;
-  };
-  thumbnail: string;
-}
 interface CarProps extends TouchableOpacityProps {
-  data: CarData;
+  data: CarDto;
 }
 const Car: React.FC<CarProps> = ({data, ...rest}) => {
   return (
