@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import {
   Container,
@@ -20,56 +21,55 @@ import {
 import BackButton from '../../components/BackButton';
 import ImageSlider from '../../components/ImageSlider';
 import Accessory from '../../components/Accessory';
-import speedSvg from '../../assets/acceleration.svg';
-import aceletationSvg from '../../assets/force.svg';
-import forceSvg from '../../assets/force.svg';
-import gasolineSvg from '../../assets/gasoline.svg';
-import exchangeSvg from '../../assets/exchange.svg';
-import peopleSvg from '../../assets/people.svg';
-import Button from '../../components/Button';
-import {useNavigation} from '@react-navigation/native';
 
+import Button from '../../components/Button';
+import {CarDto} from '../../dtos/CarDto';
+import {getAccessoryIcon} from '../../utils/getAccessoryIcon';
+
+interface Params {
+  car: CarDto;
+}
 const CarDetails: React.FC = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const {car} = route.params as Params;
+
   const handleNavigation = () => {
     navigation.navigate('Scheduling');
+  };
+
+  const handleBack = () => {
+    navigation.goBack();
   };
   return (
     <Container>
       <Header>
-        <BackButton />
+        <BackButton onPress={() => handleBack()} />
       </Header>
       <CarImages>
-        <ImageSlider
-          imagesUrl={[
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaGoUyRN7LrlgVTUs8jDNdv0DhcBUVywEgCw&usqp=CAU',
-          ]}
-        />
+        <ImageSlider imagesUrl={car.photos} />
       </CarImages>
       <Content>
         <Details>
           <Description>
-            <Brand>Lamboguini</Brand>
-            <Name>Huracan</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Description>
           <Rent>
-            <Period>Ao dia</Period>
-            <Price>R$ 580</Price>
+            <Period>{car.rent.period}</Period>
+            <Price>R$ {car.rent.price}</Price>
           </Rent>
         </Details>
         <Accessories>
-          <Accessory name="380Km/h" icon={speedSvg} />
-          <Accessory name="3.2s" icon={aceletationSvg} />
-          <Accessory name="800Hp" icon={forceSvg} />
-          <Accessory name="Gasoline" icon={gasolineSvg} />
-          <Accessory name="Auto" icon={exchangeSvg} />
-          <Accessory name="2 Pessoas" icon={peopleSvg} />
+          {car.accessories.map((accessory, index) => (
+            <Accessory
+              key={index}
+              name={accessory.name}
+              icon={getAccessoryIcon(accessory.type)}
+            />
+          ))}
         </Accessories>
-        <About>
-          Este é automóvel desportivo. Surgiu do lendário touro de indutado na
-          praça real Maestranza de Sevilla. É um belíssimo carro para quem gosta
-          de acelerar
-        </About>
+        <About>{car.about}</About>
       </Content>
       <Footer>
         <Button

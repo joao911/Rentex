@@ -31,8 +31,8 @@ const Home: React.FC = () => {
     fetchCars();
   }, []);
 
-  const handleNavigation = () => {
-    navigation.navigate('CarDetails');
+  const handleNavigation = (car: CarDto) => {
+    navigation.navigate('CarDetails', {car});
   };
 
   return (
@@ -55,7 +55,7 @@ const Home: React.FC = () => {
           data={cars}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <Car data={item} onPress={handleNavigation} />
+            <Car data={item} onPress={() => handleNavigation(item)} />
           )}
         />
       )}

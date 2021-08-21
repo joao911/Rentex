@@ -14,13 +14,14 @@ import {
   CarImage,
 } from './styles';
 
-import Gasoline from '../../assets/gasoline.svg';
 import {CarDto} from '../../dtos/CarDto';
+import {getAccessoryIcon} from '../../utils/getAccessoryIcon';
 
 interface CarProps extends TouchableOpacityProps {
   data: CarDto;
 }
 const Car: React.FC<CarProps> = ({data, ...rest}) => {
+  const MotorIcon = getAccessoryIcon(data.fuel_type);
   return (
     <Container {...rest}>
       <Details>
@@ -32,7 +33,7 @@ const Car: React.FC<CarProps> = ({data, ...rest}) => {
             <Price>{`R$ ${data.rent.price}`}</Price>
           </Rent>
           <Type>
-            <Gasoline />
+            <MotorIcon />
           </Type>
         </About>
       </Details>
